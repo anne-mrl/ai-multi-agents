@@ -41,7 +41,7 @@ class FAISSKnowledgeDatabaseManager:
         """Search for a related issue in FAISS."""
         query_embedding = self.get_embedding(query)
         distances, indices = self.index.search(np.array([query_embedding]), top_k)
-        # Convert FAISS distance to cosine similarity
+        # Convert euclidean distance to cosine similarity
         similarities = 1 - distances[0]
         print("DEBUG FAISS")
         for i, index in enumerate(indices[0]):
